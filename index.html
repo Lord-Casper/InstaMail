@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Send an Email</h1>
+        <form id="email-form">
+            <label for="to-email">Recipient's Email:</label>
+            <input type="email" id="to-email" name="to-email" required><br><br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br><br>
+            <button type="submit">Send Email</button>
+        </form>
+        <div class="message" id="message"></div>
+        <button onclick="window.location.href='receive.html'">Receive Emails</button>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init('nZ7HwCCRpJYlmHPIy'); // Your actual public key from EmailJS
+        })();
+
+        document.getElementById('email-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const serviceID = 'service_7a5c31y'; // Your actual Service ID
+            const templateID = 'template_hy50ajy'; // Your actual Template ID
+
+            const toEmail = document.getElementById('to-email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const templateParams = {
+                to_email: toEmail,
+                subject: subject,
+                message: message
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function(response) {
+                    document.getElementById('message').innerHTML = 'Email sent successfully!';
+                }, function(error) {
+                    document.getElementById('message').innerHTML = 'Failed to send email. Error: ' + JSON.stringify(error);
+                });
+        });
+    </script>
+</body>
+</html>
