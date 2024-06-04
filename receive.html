@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receive Emails</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        #emails {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: left;
+            overflow-y: scroll;
+            max-height: 200px;
+        }
+
+        .email {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .email p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .email p:first-child {
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Receive Emails</h1>
+        <p>Welcome to the email reception desk! Here, you can receive and respond to emails from your friends and family.</p>
+        <p>Below, you'll see any emails that have been sent to you. If there aren't any yet, why not be the first to send one?</p>
+        <p>To respond to an email, simply enter your email address and your response in the form below and click "Send Response".</p>
+        <div id="emails">
+            <!-- Display received emails here -->
+        </div>
+        <form id="response-form">
+            <label for="sender-email">Their Email:</label>
+            <input type="email" id="sender-email" name="sender-email" required><br><br>
+            <label for="response">Your Response:</label><br>
+            <textarea id="response" name="response" required></textarea><br><br>
+            <button type="submit">Send Response</button>
+        </form>
+        <div class="message" id="response-message"></div>
+        <button onclick="window.location.href='index.html'">Back to Send Emails</button>
+    </div>
+    
+        <div class="message" id="response-message"></div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script>
+        /* JavaScript for fetching and sending emails */
+    </script>
+</body>
+</html>
